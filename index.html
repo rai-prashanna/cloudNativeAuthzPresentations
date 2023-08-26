@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+
+  <title>Cloud native authorization</title>
+
+  <meta name="description" content="Presentation of Cloud native authorization" />
+  <meta name="author" content="Prashanna Rai" />
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="dist/reset.css" />
+  <link rel="stylesheet" href="dist/reveal.css" />
+  <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+</head>
+
+<body>
+  <div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <section data-transition="convex">
+        <a href="https://revealjs.com">
+          <img src="images/icon.svg" alt="reveal.js logo" style="
+                height: 180px;
+                margin: 0 auto 4rem auto;
+                background: transparent;
+              " class="demo-logo" />
+        </a>
+        <h3>Cloud native authorization</h3>
+        <p>
+          <small>Thesis worker
+            <a href="https://rai-prashanna.github.io/">PRASHANNA RAI</a>
+          </small>
+        </p>
+        <p>
+          <small>Supervisor
+            <a href="https://www.linkedin.com/in/vanjadivkovic/">VANJA DIVKOVIC</a>
+          </small>
+        </p>
+
+      </section>
+      <!-- <section>
+				<section data-transition="convex">
+					<h2>Cloud</h2>
+					<p>
+						is about where you run our software
+					</p>
+				</section>
+				<section data-transition="convex">
+					<img src="images/cloud.png" alt="reveal.js logo"
+						style="margin: 0 auto 4rem auto; background: transparent;" class="demo-logo" width="45%"
+						height="20%">
+				</section>
+			</section> -->
+      <section>
+        <section data-transition="convex">
+          <h2>Cloud native</h2>
+          <p>
+            is an approach to develop applications using a stack of
+            technologies which enables application autoscale, vendor-agnostics applications
+            and Self-service deploy.
+          </p>
+        </section>
+
+        <!-- <section>
+            <h2>features of cloud native applications</h2>
+            <p>Use the <em>Space</em> key to navigate through all slides.</p>
+					<br>
+            <a href="#/2/1" class="navigate-down">
+              <img
+                class="r-frame"
+                style="background: rgba(255, 255, 255, 0.1)"
+                width="178"
+                height="238"
+                data-src="https://static.slid.es/reveal/arrow.png"
+                alt="Down arrow"
+              />
+            </a>
+          </section> -->
+        <!--           <section>
+            <h2>features of cloud native applications</h2>
+            <ol>
+              <li>Microservices</li>
+              <li>domain seggregration</li>
+              <li>Auto scaling</li>
+              <li>Self-service deployment </li>
+              <li>Health checking and Self-healing </li>
+            </ol>
+          </section>
+          <section data-transition="convex">
+            <img
+              src="images/cloudnative.png"
+              alt="reveal.js logo"
+              style="margin: 0 auto 4rem auto; background: transparent"
+              class="demo-logo"
+              width="65%"
+            />
+          </section> -->
+      </section>
+      <section>
+        <section>
+          <h2>Authorization</h2>
+          <h4>
+            is process of making decisions to authenticated users should be
+            allowed to execute operations
+          </h4>
+        </section>
+        <section>
+          <h3>Coarsed-grained Authorization</h3>
+          <figure>
+            <img src="images/coarsed-grained-authz.png" alt="reveal.js logo"
+              style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="70%" />
+            <figcaption>with privilege role</figcaption>
+          </figure>
+        </section>
+        <!-- <section>
+          <h3>Coarsed-grained Authorization</h3>
+          <figure>
+            <img src="images/coarsed-grained-authz-negeative-decision.png" alt="reveal.js logo"
+              style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="70%" />
+            <figcaption>with under-privilege role</figcaption>
+          </figure>
+        </section> -->
+        <section>
+          <h2>Fine-grained Authorization</h2>
+          <figure>
+            <img src="images/fine-grained-authz.png" alt="reveal.js logo"
+              style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="20%" />
+            <figcaption>with privilege role</figcaption>
+          </figure>
+        </section>
+      </section>
+      <!--
+        <section>
+          <section>
+            <p>Cloud native authorization</p>
+            <h2 class="r-fit-text">Problem</h2>
+          </section>
+           <section data-auto-animate>
+            <h2 data-id="code-title">Python based REST API controller</h2>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs javascript" data-trim data-line-numbers>
+						def get_paymentStatus(): 
+							"""get status of payment for order made by user
+
+							:rtype: PaymentStatus
+							"""
+							# Authorize REST API Request
+							........
+					</code></pre>
+          </section>
+
+          <section data-auto-animate>
+            <h2 data-id="code-title">Python based REST API controller</h2>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs javascript" data-trim data-line-numbers="|4,8-11|17|22-24"><script type="text/template">
+					def get_paymentStatus(): 
+						# Authorize REST API Request
+						auth_error = auth_helper.authorize(connexion.request,
+															 				ROLE_READ_PAYMENT)
+						if auth_error is not None:
+							// send authorization error message
+						else:
+							//allow and do bussiness logic
+					</script></code></pre>
+          </section>
+          <section data-auto-animate>
+            <h2 data-id="code-title">
+              Here, required role is hardcoded in controller
+            </h2>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs javascript" data-trim data-line-numbers="|4,8-11|17|22-24"><script type="text/template">
+						def get_paymentStatus(): 
+						# Authorize REST API Request
+						auth_error = auth_helper.authorize(connexion.request,
+            ROLE_READ_PAYMENT)
+					</script></code></pre>
+          </section>
+          <section data-auto-animate>
+            <h2 data-id="code-title">
+              During update of policy, Developer have to make changes to this API
+              controller
+            </h2>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs javascript" data-trim data-line-numbers="|4,8-11|17|22-24"><script type="text/template">
+						def get_paymentStatus(): 
+						# Authorize REST API Request
+						auth_error = auth_helper.authorize(connexion.request,
+            ROLE_READ_PAYMENT)
+					</script></code></pre>
+          </section>
+          <section data-auto-animate>
+            <h2 data-id="code-title">Python based Authorization code</h2>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs javascript" data-trim data-line-numbers="|3|5|-11|17|22-24"><script type="text/template">
+					def authorize(rest_request, permission):
+						"""Authorization Api, to verify required ROLES
+						:param rest_request: request object form rest call
+						:type rest_request: connexion.request
+						:param permission: role to verify authorization
+						:type permission: string
+					
+						:rtype: V1Error or None
+						"""
+					</script></code></pre>
+          </section>
+          <section data-auto-animate>
+            <h2 data-id="code-title">Python based REST API controller</h2>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs javascript" data-trim data-line-numbers="|2|3|4"><script type="text/template">
+					def authorize(rest_request, permission):
+							PARSE request method,request url
+							PARSE ROLES from JWT TOKEN
+							CHECK ROLES contains required PERMISSION
+					</script></code></pre>
+          </section>
+          <section data-auto-animate>
+            <h2 data-id="code-title">
+              Problem with above approach
+            </h2>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs javascript" data-trim data-line-numbers="|4,8-11|17|22-24"><script type="text/template">
+						above code cannot be resued with non-python application
+					</script></code></pre>
+          </section>
+
+          <section data-auto-animate>
+            <h2 data-id="code-title">Java based REST API controller</h2>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs javascript" data-trim data-line-numbers="|4,8-11|17|22-24"><script type="text/template">
+						/**
+						* Implements GET /api/v1/orders/
+						*/
+					   public class ReadOrders {
+					   
+						   private final Orderservice orderService;
+					   
+						   public Orders read(ReadOrderRequest request) {
+							   boolean allowed = false;
+							   Authz authz = MyAuthzLogic.getInstance();
+							   allowed = authz.isAllowed(request, "GET");
+							   if (!allowed) {
+								   // do not allow
+							   }
+							   // allow to read Orders
+							   return response;
+						   }
+					   }
+						</script></code></pre>
+          </section>
+          <section data-auto-animate>
+            <h2 data-id="code-title">
+              Here, no any role is hardcoded in controller
+            </h2>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs javascript" data-trim data-line-numbers="|4,8-11|17|22-24"><script type="text/template">
+						public ReadOrders read(ReadOrderRequest request) {
+							boolean allowed = false;
+							Authz authz = MyAuthzLogic.getInstance();
+							allowed = authz.isAllowed(request, "GET");
+						}
+					</script></code></pre>
+          </section>
+          <section data-auto-animate>
+            <h2 data-id="code-title">
+              Problem with specialized authorization code
+            </h2>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs javascript" data-trim data-line-numbers="|4,8-11|17|22-24"><script type="text/template">
+						above code cannot be resued with non-Java application
+					</script></code></pre>
+          </section> 
+        </section> -->
+      <section>
+        <!-- <section>
+            <p>Cloud native authorization</p>
+            <h2 class="r-fit-text"></h2>
+          </section> -->
+        <section>
+          <h2>Cloud native authorization Problem</h2>
+          <img class="r-frame" height="20%" src="images/offload.png" alt="Down arrow" />
+          <p>
+            offload the <strong>authorization logic from microservice and only enforce decision into system</strong>
+          </p>
+        </section>
+
+        <section>
+          <h2>Use of</h2>
+          <p>
+            <strong>Open Policy Agent (OPA)</strong>
+          </p>
+          <img class="r-frame" height="20%" data-src="https://static.slid.es/reveal/arrow.png" alt="Down arrow" />
+        </section>
+        <section>
+          <h4>
+            OPA is CNCF graduated project, domain agnostic, general purpose policy engine
+          </h4>
+          <img src="images/opa-system.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="494" />
+        </section>
+        <section>
+          <h2>versatility of OPA</h2>
+          <img src="images/opa-integration.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="504" />
+        </section>
+        <section>
+          <h2>Rego language</h2>
+          <ol>
+            <li>declarative language</li>
+            <li>domain specific language</li>
+            <li>
+              no any library is need to use JSON/YAML file or to create REST
+              API server
+            </li>
+            <li>
+              no any library is need to decoding JWT token or making HTTP
+              Request
+            </li>
+            <li>
+              provides index supported statements for performance
+            </li>
+          </ol>
+        </section>
+        <!-- <section>
+          <h3>Example of rego</h3>
+          <pre><code class="hljs javascript" ><script type="text/template">
+						package api.test
+						default allow = false 
+						allow {                                           
+							"GET" = input.method                            
+							contains("/api/v1/stocks", input.resource)      
+							"Read" in input.roles                           
+						}
+
+						(2)Default rule value
+						(3)Rule Head
+						(4-6)Rule Body expression - load value from input and compare with method
+						(5)Rule Body expression - compare input value to desired resource
+						(6)Rule Body expression - compare input value to desired role
+						</script></code></pre>
+        </section> -->
+        <section>
+          <h3>Example OF REGO</h3>
+          <img src="images/examplerego.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="794" />
+        </section>
+        <section>
+          <h2>rule-indexing</h2>
+          <img src="images/rule-indexing.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="504" />
+        </section>
+        <!-- <section>
+            <h2>Input to REST API</h2>
+            <pre><code class="hljs javascript" ><script type="text/template">
+						{
+							"input": {
+								"method": "POST",
+								"resource": "/URL4",
+								"roles": [
+									"Write"
+								]
+							}
+						}
+						</script></code></pre>
+          </section> -->
+        <!-- <section>
+            <h2>Input to Wasm or Intermediate File based evaluator</h2>
+            <pre><code class="hljs javascript" ><script type="text/template">
+						{
+							"method": "POST",
+							"resource": "/URL4",
+							"roles": [
+								"Write"
+							]
+						}
+						</script></code></pre>
+          </section> -->
+        <!-- <section>
+            <h2>Output</h2>
+            <pre><code class="hljs javascript" ><script type="text/template">
+						{
+							"allow": true
+						}
+						</script></code></pre>
+          </section> -->
+      </section>
+      <section>
+        <h6>integration approaches of OPA</h6>
+        <table>
+          <thead>
+            <tr>
+              <th>Integration approach</th>
+              <th>Performance</th>
+              <th>Compatibility</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Go API/SDK</td>
+              <td>fastest</td>
+              <td>Go lang</td>
+            </tr>
+            <tr>
+              <td>Wasm</td>
+              <td>faster</td>
+              <td>Wasm runtime supported languages</td>
+            </tr>
+            <tr>
+              <td>REST API via HTTP</td>
+              <td>slow</td>
+              <td>Any languages</td>
+            </tr>
+            <tr>
+              <td>REST API via Unix Domain Socket</td>
+              <td>faster than HTTP based</td>
+              <td>Any languages</td>
+            </tr>
+            <tr>
+              <td>Intermediate Representation (IR)</td>
+              <td>depends upon implementations of custom evaluator</td>
+              <td>Any languages</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <section>
+          <h3>investigation aspects of OPA into System</h3>
+          <ol>
+            <li>Java based application</li>
+            <li>
+              contains coarsed-grained and fine-grained authorization
+            </li>
+            <li>contains ACL file as JSON file</li>
+            <li>
+              application uses Role-based access control (RBAC)
+            </li>
+          </ol>
+        </section>
+        <section>
+          <h3>Exisiting structure of Access-control List</h3>
+          <img src="images/ACL.png" alt="reveal.js logo" style="margin: 0 auto 4rem auto; background: transparent"
+            class="demo-logo" height="704" />
+        </section>
+        <section>
+          <h3>Exisiting Access-control List Size</h3>
+          <ol>
+            <li>143 rules</li>
+            <li>
+              68 different permissions and 7 different roles
+            </li>
+          </ol>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h4>
+            Solution of coarsed-grained authz with unoptimized version of rego
+          </h4>
+          <img src="images/unoptimized-coarsed-grainedrego.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="704" />
+        </section>
+        <section>
+          <h6>
+            Solution of coarse-grained authz with optimization flag=2
+          </h6>
+          <img src="images/optimized-fine-grained.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="704" />
+        </section>
+        <!-- <section>
+          <h4>input to coarsed-grained authz</h4>
+          <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|4,8-11|17|22-24"><script type="text/template">
+						{
+							"method": "POST",
+							"resource": "files/upload/updateservice/package",
+							"roles": [
+								"OmcEquipmentObserver",
+								"CreateJob",
+								"DeleteJob",
+								"OmcEquipmentAdministrator"
+							]
+						}
+					</script></code></pre>
+        </section>
+        <section>
+          <h4>output to coarsed-grained authz</h4>
+          <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|4,8-11|17|22-24"><script type="text/template">
+						{
+							"allow": true
+						}
+					</script></code></pre>
+        </section> -->
+        <!-- <section>
+          <h2>profiling of unoptimized version of rego</h2>
+          <img src="images/profiling-opt-0.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="504" />
+        </section> -->
+        <section>
+          <h4>
+            problem with fine-grained authz
+          </h4>
+          <ol>
+            <li>it needs to filter all the datas that was collected during operations before
+              sending response</li>
+          </ol>
+          <img src="images/fine-grained-authz-approach.png" alt="reveal.js logo"
+          style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="504" />
+        </section>
+        <section>
+          <h4>
+            Solution of fine-grained authz with unoptimized version of rego
+          </h4>
+          <img src="images/unoptimized-fine-grainedrego.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="754" />
+        </section>
+        <!-- <section>
+          <h4>input to fine-grained authz</h4>
+          <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|4,8-11|17|22-24"><script type="text/template">
+						{
+							"method": "GET",
+							"resources": [
+								"/TaskService/Tasks/1/",
+								"files/upload/updateservice/package",
+								"/TaskService/Tasks/3/"
+							],
+							"roles": [
+								"OmcEquipmentObserver",
+								"CreateJob",
+								"DeleteJob",
+								"OmcEquipmentAdministrator"
+							]
+						}
+					</script></code></pre>
+        </section> -->
+        <!-- <section>
+          <h4>output to fine-grained authz</h4>
+          <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|4,8-11|17|22-24"><script type="text/template">
+						{
+							"batch_allow": [
+								"/TaskService/Tasks/1/",
+								"/TaskService/Tasks/3/"
+							]
+						}
+					</script></code></pre>
+        </section> -->
+        <section>
+          <h4>Solution of fine-grained authz with optimization flag=2</h4>
+          <img src="images/optimized-fine-grained.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="704" />
+        </section>
+        <!-- <section>
+          <h2>profiling of optimized version of rego</h2>
+          <img src="images/profiling-opt-2.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="504" />
+        </section>
+        <section>
+          <h3>evaluation time of coarsed-grained authorization</h3>
+          <h4>
+            with all indexed supported statements, time is reduced from
+            <h3>810 microseconds</h3>
+            to
+            <h3>235 microseconds</h3>
+          </h4>
+        </section> -->
+
+        <!-- <section>
+					<h3>fine-grained authorization</h3>
+					<h4>with optimized version of rego, time is reduced  from <h3>4ms microseconds</h3> to <h3>235 microseconds</h3></h4>
+				</section>					 -->
+      </section>
+      <section>
+        <h3>implementation within Java application</h3>
+        <ol type="1">
+          <li>REST API via HTTP</li>
+          <li>REST API via Unix Domain Socket</li>
+          <li>
+            <a href="https://github.com/borgeby/jarl">Jarl library</a> that
+            uses Intermediate file
+          </li>
+          <li>
+            use of
+            <a href="https://github.com/sangkeon/java-opa-wasm">library</a>
+            that executes Wasm binaray inside JVM
+          </li>
+        </ol>
+      </section>
+      <section>
+        <h5>existing EMC Application</h5>
+        <img src="images/oldSystem.png" alt="reveal.js logo" style="margin: 0 auto 4rem auto; background: transparent"
+          class="demo-logo" height="784" width="1080" />
+      </section>
+      <section>
+        <h3>implementation details with OPA</h3>
+      </section>
+      <section>
+        <h8>Centralized integration approach within EMC</h8>
+        <!-- <div class="scroll-container"> -->
+        <img class="img_container" src="images/central-opa.png" alt="reveal.js logo"
+          style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="784" width="2080" />
+        <!-- </div> -->
+      </section>
+      <section>
+        <h8>Distributed integration approach within EMC</h8>
+        <img src="images/sidecar-opa.png" alt="reveal.js logo" style="margin: 0 auto 4rem auto; background: transparent"
+          class="demo-logo" height="784" width="4080" />
+      </section>
+      <section>
+        <h8>Distributed integration approach within EMC</h8>
+        <img src="images/Wasm-jarl.png" alt="reveal.js logo" style="margin: 0 auto 4rem auto; background: transparent"
+          class="demo-logo" height="784" width="1080" />
+      </section>
+      <section>
+        <section>
+          <h2>measurements of latency with Prometheus</h2>
+          <ol type="1">
+            <li>
+              latency metrics is generated on ContainerReque-
+              stFilter(Prefilter) of Grizzly server
+            </li>
+            <li>
+              latency metric is reported back to registry before exiting
+              ContainerRequestFilter(PostFilter) of Grizzly server
+            </li>
+            <li>promql to get average latency</li>
+          </ol>
+        </section>
+        <section>
+          <h2>Measurements</h2>
+          <img src="images/coarsed-grained-table.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="20%" />
+        </section>
+        <section>
+          <h2>Discussion of old implementations</h2>
+          <ol type="1">
+            <li>
+              old implementations uses linear search to find the rule
+            </li>
+            <li>
+              old implementations uses HashMap to lookup permission needed for
+              endpoints
+            </li>
+            <li>
+              So, the position of rule within HashMap affects on evaluation
+              time
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>Discussion of rule-indexing enabled OPA-engine</h2>
+          <ol type="1">
+            <li>
+              the position of rule within rego is unaffected on evaluation
+              time
+            </li>
+            <li>
+              the position of rule within rego is unaffected on evaluation
+              time
+            </li>
+          </ol>
+        </section>
+        <!-- 
+        <section>
+          <h4>evaluation process of OPA engine when we use glob pattern</h4>
+          <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-6|6"><script type="text/template">
+						{
+							"QueryID": 0,
+							"ParentID": 0,
+							"Locals": null,
+							"LocalMetadata": {},
+							"Message": "(matched 2rules, early exit)",
+							"Ref": [
+								{
+									"type": "var",
+									"value": "data"
+								},
+								{
+									"type": "string",
+									"value": "authz"
+								},
+								{
+									"type": "string",
+									"value": "redfish"
+								},
+								{
+									"type": "string",
+									"value": "v1"
+								},
+								{
+									"type": "string",
+									"value": "policy"
+								},
+								{
+									"type": "string",
+									"value": "allow"
+								}
+							]
+						}
+						
+
+					</script></code></pre>
+        </section> -->
+
+        <section>
+          <h2>Analysis</h2>
+          <ol type="1">
+            <li>
+              Among all the approaches, Unix Domain Socket based
+              implementation has lower overhead
+            </li>
+            <li>
+              But, Unix Domain Socket based integration is 10%
+              slower than exisiting implementation
+            </li>
+            <li>
+              But, HTTP based integration is 58%
+              slower than exisiting implementation
+            </li>
+            <li>
+              Jarl based integration was 407% slower than existing implementation
+            </li>
+            <li>
+              Wasm based integration was 303% times slower than existing implementation
+            </li>
+          </ol>
+        </section>
+        <!-- <section>
+          <h3>Jarl keep on generating logs during evaluation</h3>
+          <img src="images/jarl-logging.png" width="980" height="319" />
+        </section>
+        <section>
+          <h3>execution process of Wasm binary into JVM</h3>
+          <img src="images/Wasm-execution-process.png" width="592" height="465" />
+        </section> -->
+        <section>
+          <h2>Measurements</h2>
+          <img src="images/fine-grained-table.png" width="1002" height="705" />
+        </section>
+        <section>
+          <h2>Measurements</h2>
+          <img src="images/old Authz, OPA via HTTP, OPA via UDS and Wasm .png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="1002" height="705" />
+        </section>
+        <!-- <section>
+          <h4>evaluation process of OPA engine when we use regex pattern</h4>
+          <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-6|6"><script type="text/template">
+						{
+							"QueryID": 0,
+							"ParentID": 0,
+							"Locals": null,
+							"LocalMetadata": {},
+							"Message": "(matched 264rules, early exit)",
+							"Ref": [
+								{
+									"type": "var",
+									"value": "data"
+								},
+								{
+									"type": "string",
+									"value": "authz"
+								},
+								{
+									"type": "string",
+									"value": "redfish"
+								},
+								{
+									"type": "string",
+									"value": "v1"
+								},
+								{
+									"type": "string",
+									"value": "policy"
+								},
+								{
+									"type": "string",
+									"value": "allow"
+								}
+							]
+						}
+					</script></code></pre>
+        </section> -->
+        <section>
+          <h2>Analysis</h2>
+          <ol>
+            <li>
+              Old implementation uses lot of iteration to filter out datas
+              before sending response
+            </li>
+            <li>
+              Wasm-time uses JIT compiler that might have use loop unrolling
+              for large interations
+            </li>
+          </ol>
+        </section>
+      </section>
+      <section>
+        <!-- <section>
+          <h2>Insights with glob pattern matching</h2>
+          <ol>
+            <li>
+              glob.match("/A/B/*", ["/"], "/A/B/C/") => false
+            </li>
+            <li>
+              glob.match("/A/B/*", ["/"], "/A/B/C") => true
+            </li>
+            <li>
+              glob.match("/redfish/A/B/*", ["/"], "/A/B/C") => false
+            </li>
+          </ol>
+        </section>
+        <section>
+          <h2>Insights with regex pattern matching</h2>
+          <ol>
+            <li>
+              regex.match( "/A/B/[^/]" , "/A/B/C/") => true
+            </li>
+            <li>
+              regex.match( "/A/B/[^/]" , "/A/B/C") => true
+            </li>
+            <li>
+              regex.match( "/A/B/[^/]" , "/redfish/A/B/C") => true
+            </li>
+          </ol>
+        </section> -->
+        <section>
+          <h2>
+            Performance depends upon evaluation time + system integrations
+          </h2>
+          <ol>
+            <li>
+              Developer must consider on using rule indexing
+            </li>
+            <li>
+              Developer must consider approach that has least overhead
+            </li>
+          </ol>
+        </section>
+      </section>
+      <section data-auto-animate>
+        <h2 data-id="code-title">Demo links</h2>
+        <a href="https://play.openpolicyagent.org/p/ZBnurgkbUy">coarsed-grained-authz</a></br>
+        <a href="https://play.openpolicyagent.org/p/zoKO1NWSrS">fine-grained-authz</a>
+      </section>
+      <!-- <section data-auto-animate>
+        <h2 data-id="code-title">Please see details in report...</h2>
+        <a href="main.pdf">thesis-report</a>
+      </section>
+      <section data-auto-animate>
+        <h2 data-id="code-title">OPA cheatsheets</h2>
+        <a href="cheatsheets.pdf">OPA cheatsheets</a>
+      </section> -->
+      <section data-auto-animate>
+        <h2 data-id="code-title">Thanks! Any questions?</h2>
+      </section>
+    </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/zoom/zoom.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/search/search.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    // Also available as an ES module, see:
+    // https://revealjs.com/initialization/
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      center: true,
+      hash: true,
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [
+        RevealZoom,
+        RevealNotes,
+        RevealSearch,
+        RevealMarkdown,
+        RevealHighlight,
+      ],
+    });
+  </script>
+</body>
+
+</html>
