@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
 
-  <title>Cloud native authorization</title>
+  <title class="bigsize">Cloud native authorization</title>
 
   <meta name="description" content="Presentation of Cloud native authorization" />
   <meta name="author" content="Prashanna Rai" />
@@ -20,6 +20,23 @@
 
   <!-- Theme used for syntax highlighting of code -->
   <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  <style>
+    .left {
+      text-align: left;
+    }
+    .largestsize {
+      font-size: 300px;
+    }
+    .largersize {
+      font-size: 200px;
+    }
+    .bigsize {
+      font-size: 120px;
+    }
+    .size {
+      font-size: 100px;
+    }
+  </style>
 </head>
 
 <body>
@@ -34,16 +51,16 @@
                 background: transparent;
               " class="demo-logo" />
         </a>
-        <h3>Cloud native authorization</h3>
+        <h1 class="largersize">Cloud native authorization</h1>
         <p>
-          <small>Thesis worker
+          <medium>Thesis worker
             <a href="https://rai-prashanna.github.io/">PRASHANNA RAI</a>
-          </small>
+          </medium>
         </p>
         <p>
-          <small>Supervisor
+          <medium>Supervisor
             <a href="https://www.linkedin.com/in/vanjadivkovic/">VANJA DIVKOVIC</a>
-          </small>
+          </medium>
         </p>
 
       </section>
@@ -62,8 +79,8 @@
 			</section> -->
       <section>
         <section data-transition="convex">
-          <h2>Cloud native</h2>
-          <p>
+          <h1 class="largestsize">Cloud native</h1>
+          <p class="size">
             is an approach to develop applications using a stack of
             technologies which enables application autoscale, vendor-agnostics applications
             and Self-service deploy.
@@ -107,18 +124,18 @@
       </section>
       <section>
         <section>
-          <h2>Authorization</h2>
-          <h4>
+          <h1 class="largestsize">Authorization</h1>
+          <p class="size">
             is process of making decisions to authenticated users should be
             allowed to execute operations
-          </h4>
+          </p>
         </section>
         <section>
-          <h3>Coarsed-grained Authorization</h3>
+          <h1 class="largestsize">Coarsed-grained Authorization</h1>
           <figure>
             <img src="images/coarsed-grained-authz.png" alt="reveal.js logo"
               style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="70%" />
-            <figcaption>with privilege role</figcaption>
+            <figcaption class="size">with privilege role</figcaption>
           </figure>
         </section>
         <!-- <section>
@@ -130,11 +147,11 @@
           </figure>
         </section> -->
         <section>
-          <h2>Fine-grained Authorization</h2>
+          <h1 class="largestsize">Fine-grained Authorization</h1>
           <figure>
             <img src="images/fine-grained-authz.png" alt="reveal.js logo"
               style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="20%" />
-            <figcaption>with privilege role</figcaption>
+            <figcaption class="size">with privilege role</figcaption>
           </figure>
         </section>
       </section>
@@ -303,38 +320,38 @@
         </section>
 
         <section>
-          <h2>Use of</h2>
+          <!-- <h2 class="bigsize">Use of</h2> -->
           <p>
-            <strong>Open Policy Agent (OPA)</strong>
+            <strong class="size">Open Policy Agent (OPA)</strong>
           </p>
           <img class="r-frame" height="20%" data-src="https://static.slid.es/reveal/arrow.png" alt="Down arrow" />
         </section>
         <section>
-          <h4>
+          <h1 class="size">
             OPA is CNCF graduated project, domain agnostic, general purpose policy engine
-          </h4>
-          <img src="images/opa-system.png" alt="reveal.js logo"
-            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="494" />
+          </h1>
+          <img class="r-stretch" src="images/opa-system.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="1600" height="1000" />
         </section>
         <section>
-          <h2>versatility of OPA</h2>
-          <img src="images/opa-integration.png" alt="reveal.js logo"
-            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="504" />
+          <h1 class="size">versatility of OPA</h1>
+          <img class="r-stretch" src="images/opa-integration.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="2000" height="1300" />
         </section>
         <section>
-          <h2>Rego language</h2>
+          <h1 class="size">Rego language</h1>
           <ol>
-            <li>declarative language</li>
-            <li>domain specific language</li>
-            <li>
+            <li class="size">declarative language</li>
+            <li class="size">domain specific language</li>
+            <li class="size">
               no any library is need to use JSON/YAML file or to create REST
               API server
             </li>
-            <li>
+            <li class="size">
               no any library is need to decoding JWT token or making HTTP
               Request
             </li>
-            <li>
+            <li class="size">
               provides index supported statements for performance
             </li>
           </ol>
@@ -358,14 +375,14 @@
 						</script></code></pre>
         </section> -->
         <section>
-          <h3>Example OF REGO</h3>
-          <img src="images/examplerego.png" alt="reveal.js logo"
-            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="794" />
+          <h2 class="bigsize">Example OF REGO</h2>
+          <img class="r-stretch" src="images/examplerego.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="2000" height="1300" />
         </section>
         <section>
-          <h2>rule-indexing</h2>
-          <img src="images/rule-indexing.png" alt="reveal.js logo"
-            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="504" />
+          <h2 class="bigsize">rule-indexing</h2>
+          <img class="r-stretch" src="images/rule-indexing.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="2000" height="2000" />
         </section>
         <!-- <section>
             <h2>Input to REST API</h2>
@@ -402,7 +419,7 @@
 						</script></code></pre>
           </section> -->
       </section>
-      <section>
+      <!-- <section>
         <h6>integration approaches of OPA</h6>
         <table>
           <thead>
@@ -440,32 +457,32 @@
             </tr>
           </tbody>
         </table>
-      </section>
+      </section> -->
 
       <section>
         <section>
-          <h3>investigation aspects of OPA into System</h3>
+          <h1 class="bigsize">investigation aspects of OPA into System</h1>
           <ol>
-            <li>Java based application</li>
-            <li>
+            <li class="size">Java based application</li>
+            <li class="size">
               contains coarsed-grained and fine-grained authorization
             </li>
-            <li>contains ACL file as JSON file</li>
-            <li>
+            <li class="size">contains ACL file as JSON file</li>
+            <li class="size">
               application uses Role-based access control (RBAC)
             </li>
           </ol>
         </section>
         <section>
-          <h3>Exisiting structure of Access-control List</h3>
-          <img src="images/ACL.png" alt="reveal.js logo" style="margin: 0 auto 4rem auto; background: transparent"
-            class="demo-logo" height="704" />
+          <h2 class="bigsize">Exisiting structure of Access-control List</h2>
+          <img class="r-stretch" src="images/ACL.png" alt="reveal.js logo" style="margin: 0 auto 4rem auto; background: transparent"
+            class="demo-logo" width="2000" height="1300" />
         </section>
         <section>
-          <h3>Exisiting Access-control List Size</h3>
+          <h1 class="bigsize">Exisiting Access-control List Size</h1>
           <ol>
-            <li>143 rules</li>
-            <li>
+            <li class="size">143 rules</li>
+            <li class="size">
               68 different permissions and 7 different roles
             </li>
           </ol>
@@ -473,18 +490,18 @@
       </section>
       <section>
         <section>
-          <h4>
+          <h2 class="bigsize">
             Solution of coarsed-grained authz with unoptimized version of rego
-          </h4>
+          </h2>
           <img src="images/unoptimized-coarsed-grainedrego.png" alt="reveal.js logo"
-            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="704" />
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="2000" height="1300"/>
         </section>
         <section>
-          <h6>
+          <h2 class="bigsize">
             Solution of coarse-grained authz with optimization flag=2
-          </h6>
+          </h2>
           <img src="images/optimized-fine-grained.png" alt="reveal.js logo"
-            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="704" />
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="1600" height="1300" />
         </section>
         <!-- <section>
           <h4>input to coarsed-grained authz</h4>
@@ -515,22 +532,27 @@
             style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="504" />
         </section> -->
         <section>
-          <h4>
+          <h2 class="bigsize">
             problem with fine-grained authz
-          </h4>
+          </h2>
           <ol>
-            <li>it needs to filter all the datas that was collected during operations before
+            <li class="size">it needs to filter all the datas that was collected during operations before
               sending response</li>
           </ol>
-          <img src="images/fine-grained-authz-approach.png" alt="reveal.js logo"
-          style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="504" />
         </section>
         <section>
-          <h4>
+          <h2 class="bigsize">
+            approaches with fine-grained authz
+          </h2>
+          <img class="r-stretch" src="images/fine-grained-authz-approach.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="2000" height="1300" />
+        </section>
+        <section>
+          <h2 class="bigsize">
             Solution of fine-grained authz with unoptimized version of rego
-          </h4>
+          </h2>
           <img src="images/unoptimized-fine-grainedrego.png" alt="reveal.js logo"
-            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="754" />
+            style="margin: 0 auto 4rem auto; background: transparent" class="r-stretch" class="demo-logo" width="2000" height="1300" />
         </section>
         <!-- <section>
           <h4>input to fine-grained authz</h4>
@@ -563,9 +585,9 @@
 					</script></code></pre>
         </section> -->
         <section>
-          <h4>Solution of fine-grained authz with optimization flag=2</h4>
+          <h2 class="bigsize">Solution of fine-grained authz with optimization flag=2</h2>
           <img src="images/optimized-fine-grained.png" alt="reveal.js logo"
-            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="704" />
+            style="margin: 0 auto 4rem auto; background: transparent" class="r-stretch" class="demo-logo" width="2000" height="1300" />
         </section>
         <!-- <section>
           <h2>profiling of optimized version of rego</h2>
@@ -588,77 +610,93 @@
 				</section>					 -->
       </section>
       <section>
-        <h3>implementation within Java application</h3>
+        <h1 class="bigsize">implementation within Java application</h1>
         <ol type="1">
-          <li>REST API via HTTP</li>
-          <li>REST API via Unix Domain Socket</li>
-          <li>
+          <li class="size">REST API via HTTP</li>
+          <li class="size">REST API via Unix Domain Socket</li>
+          <li class="size">
             <a href="https://github.com/borgeby/jarl">Jarl library</a> that
             uses Intermediate file
           </li>
-          <li>
+          <li class="size">
             use of
             <a href="https://github.com/sangkeon/java-opa-wasm">library</a>
             that executes Wasm binaray inside JVM
           </li>
         </ol>
       </section>
-      <section>
+      <!-- <section>
         <h5>existing EMC Application</h5>
         <img src="images/oldSystem.png" alt="reveal.js logo" style="margin: 0 auto 4rem auto; background: transparent"
           class="demo-logo" height="784" width="1080" />
+      </section> -->
+      <section>
+        <h1 class="bigsize">implementation details with OPA</h1>
       </section>
       <section>
-        <h3>implementation details with OPA</h3>
-      </section>
-      <section>
-        <h8>Centralized integration approach within EMC</h8>
+        <h4>Centralized integration approach within EMC</h4>
         <!-- <div class="scroll-container"> -->
-        <img class="img_container" src="images/central-opa.png" alt="reveal.js logo"
-          style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="784" width="2080" />
+        <img class="r-stretch" class="img_container" src="images/central-opa.png" alt="reveal.js logo"
+          style="margin: 0 4rem; background: transparent" class="demo-logo" class="r-stretch" width="3800" height="1300" />
         <!-- </div> -->
       </section>
       <section>
         <h8>Distributed integration approach within EMC</h8>
         <img src="images/sidecar-opa.png" alt="reveal.js logo" style="margin: 0 auto 4rem auto; background: transparent"
-          class="demo-logo" height="784" width="4080" />
+          class="demo-logo" class="r-stretch" width="3800" height="1600"/>
       </section>
       <section>
         <h8>Distributed integration approach within EMC</h8>
         <img src="images/Wasm-jarl.png" alt="reveal.js logo" style="margin: 0 auto 4rem auto; background: transparent"
-          class="demo-logo" height="784" width="1080" />
+          class="demo-logo" class="r-stretch" width="3800" height="1600" />
       </section>
       <section>
         <section>
-          <h2>measurements of latency with Prometheus</h2>
+          <h2 class="bigsize">measurements of latency with Prometheus</h2>
           <ol type="1">
-            <li>
+            <li class="size">
               latency metrics is generated on ContainerReque-
               stFilter(Prefilter) of Grizzly server
             </li>
-            <li>
+            <li class="size">
               latency metric is reported back to registry before exiting
               ContainerRequestFilter(PostFilter) of Grizzly server
             </li>
-            <li>promql to get average latency</li>
+            <li class="size">promql to get average latency</li>
           </ol>
         </section>
         <section>
-          <h2>Measurements</h2>
-          <img src="images/coarsed-grained-table.png" alt="reveal.js logo"
-            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" height="20%" />
+          <h2 class="bigsize">Measurements</h2>
+          <img style="margin: 0 auto 4rem auto; background: transparent" class="r-stretch" src="images/latency-readRelays.png" width="5000" height="5000"/>
+
+          <!-- <img class="r-stretch" src="images/" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent"  /> -->
         </section>
         <section>
-          <h2>Discussion of old implementations</h2>
+          <h2 class="bigsize">Measurements</h2>
+          <img class="r-stretch" src="images/latency-readInternalAlarms.png" width="5000" height="5000"/>
+
+          <!-- <img class="r-stretch" src="images/" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent"  /> -->
+        </section>
+        <section>
+          <h2 class="bigsize">Measurements</h2>
+          <img class="r-stretch" src="images/coarsed-grained-measurements.png" />
+
+          <!-- <img class="r-stretch" src="images/" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent"  /> -->
+        </section>
+        <!-- <section>
+          <h2 class="bigsize">Discussion of old implementations</h2>
           <ol type="1">
-            <li>
+            <li class="size">
               old implementations uses linear search to find the rule
             </li>
-            <li>
+            <li class="size">
               old implementations uses HashMap to lookup permission needed for
               endpoints
             </li>
-            <li>
+            <li class="size">
               So, the position of rule within HashMap affects on evaluation
               time
             </li>
@@ -666,18 +704,18 @@
         </section>
 
         <section>
-          <h2>Discussion of rule-indexing enabled OPA-engine</h2>
+          <h2 class="bigsize">Discussion of rule-indexing enabled OPA-engine</h2>
           <ol type="1">
-            <li>
+            <li class="size">
               the position of rule within rego is unaffected on evaluation
               time
             </li>
-            <li>
+            <li class="size">
               the position of rule within rego is unaffected on evaluation
               time
             </li>
           </ol>
-        </section>
+        </section> -->
         <!-- 
         <section>
           <h4>evaluation process of OPA engine when we use glob pattern</h4>
@@ -721,25 +759,25 @@
         </section> -->
 
         <section>
-          <h2>Analysis</h2>
+          <h2 class="bigsize">Analysis</h2>
           <ol type="1">
-            <li>
+            <li class="size">
               Among all the approaches, Unix Domain Socket based
               implementation has lower overhead
             </li>
-            <li>
+            <li class="size">
               But, Unix Domain Socket based integration is 10%
               slower than exisiting implementation
             </li>
-            <li>
+            <li class="size">
               But, HTTP based integration is 58%
               slower than exisiting implementation
             </li>
-            <li>
+            <li class="size">
               Jarl based integration was 407% slower than existing implementation
             </li>
-            <li>
-              Wasm based integration was 303% times slower than existing implementation
+            <li class="size">
+              Wasm based integration was 303% slower than existing implementation
             </li>
           </ol>
         </section>
@@ -752,13 +790,15 @@
           <img src="images/Wasm-execution-process.png" width="592" height="465" />
         </section> -->
         <section>
-          <h2>Measurements</h2>
-          <img src="images/fine-grained-table.png" width="1002" height="705" />
+          <h2 class="bigsize">Measurements</h2>
+          <img class="r-stretch" src="images/fine-grained-authz-measurements.png" />
+
+          <!-- <img src="images/fine-grained-table.png" width="1002" height="705" /> -->
         </section>
         <section>
-          <h2>Measurements</h2>
-          <img src="images/old Authz, OPA via HTTP, OPA via UDS and Wasm .png" alt="reveal.js logo"
-            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="1002" height="705" />
+          <h2 class="bigsize">Measurements</h2>
+          <img lass="r-stretch" src="images/old Authz, OPA via HTTP, OPA via UDS and Wasm .png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="2400" height="1300" />
         </section>
         <!-- <section>
           <h4>evaluation process of OPA engine when we use regex pattern</h4>
@@ -799,13 +839,13 @@
 					</script></code></pre>
         </section> -->
         <section>
-          <h2>Analysis</h2>
+          <h2 class="bigsize">Analysis</h2>
           <ol>
-            <li>
+            <li class="size">
               Old implementation uses lot of iteration to filter out datas
               before sending response
             </li>
-            <li>
+            <li class="size">
               Wasm-time uses JIT compiler that might have use loop unrolling
               for large interations
             </li>
@@ -842,21 +882,21 @@
           </ol>
         </section> -->
         <section>
-          <h2>
+          <h2 class="bigsize">
             Performance depends upon evaluation time + system integrations
           </h2>
           <ol>
-            <li>
+            <li class="size">
               Developer must consider on using rule indexing
             </li>
-            <li>
+            <li class="size">
               Developer must consider approach that has least overhead
             </li>
           </ol>
         </section>
       </section>
       <section data-auto-animate>
-        <h2 data-id="code-title">Demo links</h2>
+        <h1 class="bigsize" data-id="code-title">Demo links</h1>
         <a href="https://play.openpolicyagent.org/p/ZBnurgkbUy">coarsed-grained-authz</a></br>
         <a href="https://play.openpolicyagent.org/p/zoKO1NWSrS">fine-grained-authz</a>
       </section>
@@ -869,7 +909,7 @@
         <a href="cheatsheets.pdf">OPA cheatsheets</a>
       </section> -->
       <section data-auto-animate>
-        <h2 data-id="code-title">Thanks! Any questions?</h2>
+        <h1 class="bigsize" data-id="code-title">Thanks! Any questions?</h1>
       </section>
     </div>
   </div>
@@ -884,11 +924,14 @@
     // Also available as an ES module, see:
     // https://revealjs.com/initialization/
     Reveal.initialize({
+      width: 1998,
+      height: 1598,
       controls: true,
       progress: true,
       center: true,
       hash: true,
-
+      minScale: 1.0,
+      maxScale: 2.0,
       // Learn about plugins: https://revealjs.com/plugins/
       plugins: [
         RevealZoom,
