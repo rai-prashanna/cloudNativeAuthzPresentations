@@ -24,15 +24,19 @@
     .left {
       text-align: left;
     }
+
     .largestsize {
       font-size: 300px;
     }
+
     .largersize {
       font-size: 200px;
     }
+
     .bigsize {
       font-size: 120px;
     }
+
     .size {
       font-size: 100px;
     }
@@ -474,13 +478,13 @@
         </section>
         <section>
           <h2 class="bigsize">Exisiting structure of Access-control List</h2>
-          <img class="r-stretch" src="images/ACL.png" alt="reveal.js logo" style="margin: 0 auto 4rem auto; background: transparent"
-            class="demo-logo" width="2000" height="1300" />
+          <img class="r-stretch" src="images/ACL.png" alt="reveal.js logo"
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="2000" height="1300" />
         </section>
         <section>
           <h1 class="bigsize">Exisiting Access-control List Size</h1>
           <ol>
-            <li class="size">143 rules</li>
+            <li class="size">more than 150 rules</li>
             <li class="size">
               68 different permissions and 7 different roles
             </li>
@@ -493,7 +497,7 @@
             Solution of coarse-grained authz with unoptimized version of rego
           </h2>
           <img src="images/unoptimized-coarsed-grainedrego.png" alt="reveal.js logo"
-            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="2000" height="1300"/>
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="2000" height="1300" />
         </section>
         <section>
           <h2 class="bigsize">
@@ -551,7 +555,8 @@
             Solution of fine-grained authz with unoptimized version of rego
           </h2>
           <img src="images/unoptimized-fine-grainedrego.png" alt="reveal.js logo"
-            style="margin: 0 auto 4rem auto; background: transparent" class="r-stretch" class="demo-logo" width="2000" height="1300" />
+            style="margin: 0 auto 4rem auto; background: transparent" class="r-stretch" class="demo-logo" width="2000"
+            height="1300" />
         </section>
         <!-- <section>
           <h4>input to fine-grained authz</h4>
@@ -586,7 +591,8 @@
         <section>
           <h2 class="bigsize">Solution of fine-grained authz with optimization flag=2</h2>
           <img src="images/fine-grained-authz-large.png" alt="reveal.js logo"
-            style="margin: 0 auto 4rem auto; background: transparent" class="r-stretch" class="demo-logo" width="2000" height="1300" />
+            style="margin: 0 auto 4rem auto; background: transparent" class="r-stretch" class="demo-logo" width="2000"
+            height="1300" />
         </section>
         <!-- <section>
           <h2>profiling of optimized version of rego</h2>
@@ -634,18 +640,19 @@
         <h1 class="bigsize">implementation details with OPA</h1>
       </section>
       <section>
-        <h4>Centralized integration approach within EMC</h4>
-        <img class="r-stretch" class="img_container" src="images/EMC-central.png" alt="reveal.js logo"
-          style="margin: 0 4rem; background: transparent" class="demo-logo" class="r-stretch" width="3800" height="1300" />
+        <h4>Centralized integration approach within JAVA application</h4>
+        <img class="r-stretch" class="img_container" src="images/CENTRAL.png" alt="reveal.js logo"
+          style="margin: 0 4rem; background: transparent" class="demo-logo" class="r-stretch" width="3800"
+          height="1300" />
       </section>
       <section>
-        <h8>Distributed integration approach within EMC</h8>
-        <img src="images/sidecar-opa.png" alt="reveal.js logo" style="margin: 0 auto 4rem auto; background: transparent"
-          class="demo-logo" class="r-stretch" width="3800" height="1600"/>
+        <h8>Distributed integration approach within JAVA application</h8>
+        <img src="images/SIDECAR.png" alt="reveal.js logo" style="margin: 0 auto 4rem auto; background: transparent"
+          class="demo-logo" class="r-stretch" width="3800" height="1600" />
       </section>
       <section>
-        <h8>Distributed integration approach within EMC</h8>
-        <img src="images/Wasm-jarl.png" alt="reveal.js logo" style="margin: 0 auto 4rem auto; background: transparent"
+        <h8>Distributed integration approach within JAVA application</h8>
+        <img src="images/WASM-JARL.png" alt="reveal.js logo" style="margin: 0 auto 4rem auto; background: transparent"
           class="demo-logo" class="r-stretch" width="3800" height="1600" />
       </section>
       <section>
@@ -653,10 +660,10 @@
           <h2 class="bigsize">measurements of latency with Prometheus</h2>
           <ol type="1">
             <li class="size">
-              latency metrics is generated on ContainerRequestFilter(Prefilter) of Grizzly server
+              Summary metrics is generated on ContainerRequestFilter(Prefilter) of Grizzly server
             </li>
             <li class="size">
-              latency metric is reported back to registry before exiting
+              Summary metric is reported back to registry before exiting
               ContainerRequestFilter(PostFilter) of Grizzly server
             </li>
             <li class="size">promql to get average latency</li>
@@ -664,11 +671,12 @@
         </section>
         <section>
           <h2 class="bigsize">Performance of read Relays API</h2>
-          <img style="margin: 0 auto 4rem auto; background: transparent" class="r-stretch" src="images/latency-readRelays-large.png" width="8000" height="8000"/>
+          <img style="margin: 0 auto 4rem auto; background: transparent" class="r-stretch"
+            src="images/latency-readRelays-large.png" width="8000" height="8000" />
         </section>
         <section>
           <h2 class="bigsize">Performance of read InternalAlarams API</h2>
-          <img class="r-stretch" src="images/latency-readInternalAlarams-big.png" width="5000" height="5000"/>
+          <img class="r-stretch" src="images/latency-readInternalAlarams-big.png" width="5000" height="5000" />
         </section>
         <section>
           <h2 class="bigsize">Performance of API that uses coarse-grained authz</h2>
@@ -777,15 +785,15 @@
           <h3>execution process of Wasm binary into JVM</h3>
           <img src="images/Wasm-execution-process.png" width="592" height="465" />
         </section> -->
-<!--         <section>
+        <!--         <section>
           <h2 class="bigsize">Measurements</h2>
           <img class="r-stretch" src="images/fine-grained-authz-measurements.png" />
           <img src="images/fine-grained-table.png" width="1002" height="705" /> 
-        </section> --> 
+        </section> -->
         <section>
           <h2 class="bigsize">Performance of Read TaskCollection API</h2>
           <img lass="r-stretch" src="images/chart.png" alt="reveal.js logo"
-          style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="4800" height="1500" />
+            style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="8800" height="1500" />
           <!-- <img lass="r-stretch" src="images/old Authz, OPA via HTTP, OPA via UDS and Wasm .png" alt="reveal.js logo"
             style="margin: 0 auto 4rem auto; background: transparent" class="demo-logo" width="2400" height="1300" /> -->
         </section>
@@ -841,7 +849,7 @@
           </ol>
         </section>
       </section>
-      <section>
+      <!-- <section>
         <!-- <section>
           <h2>Insights with glob pattern matching</h2>
           <ol>
@@ -870,7 +878,7 @@
             </li>
           </ol>
         </section> -->
-        <section>
+      <!-- <section>
           <h2 class="bigsize">
             Performance depends upon evaluation time + system integrations
           </h2>
@@ -882,13 +890,49 @@
               Developer must consider approach that has least overhead
             </li>
           </ol>
-        </section>
+        </section> 
+      </section> -->
+      <section>
+        <h2 class="bigsize">
+          Conclusion
+        </h2>
+        <ul>
+          <li class="size">
+            Distributed OPA i.e. implementation based on OPA Engine as a Sidecar
+            Container had a faster response in the case of coarse-grained authorization
+            REST API compared to Centralized OPA.
+          </li>
+          <li class="size">
+            Distributed OPA i.e. implementation based on Wasm Binary had a faster response in the case of fine-grained
+            authorization REST API compared to the original JAVA service.
+          </li>
+        </ul>
       </section>
-      <section data-auto-animate>
+      <section>
+        <h2 class="bigsize">
+          Conclusion
+        </h2>
+
+        <ul>
+          <li class="size">
+            In a large microservices-based ecosystem, the Distributed
+            OPA approach will occupy more resources than compared to Centralized
+            OPA.
+          </li>
+          <li class="size">
+            In the case of Centralized OPA, the loss of OPA will affect the availability
+            of the applications that are using OPA but in the case of a distributed OPA approach, OPA and application
+            co-exist so the applications become highly
+            available.
+          </li>
+        </ul>
+      </section>
+      </section>
+      <!-- <section data-auto-animate>
         <h1 class="bigsize" data-id="code-title">Demo links</h1>
         <a href="https://play.openpolicyagent.org/p/ZBnurgkbUy">coarsed-grained-authz</a></br>
         <a href="https://play.openpolicyagent.org/p/zoKO1NWSrS">fine-grained-authz</a>
-      </section>
+      </section> -->
       <!-- <section data-auto-animate>
         <h2 data-id="code-title">Please see details in report...</h2>
         <a href="main.pdf">thesis-report</a>
