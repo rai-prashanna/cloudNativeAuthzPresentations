@@ -660,11 +660,11 @@
           <h2 class="bigsize">measurements of latency with Prometheus</h2>
           <ol type="1">
             <li class="size">
-              Summary metrics is generated on ContainerRequestFilter(Prefilter) of Grizzly server
+              Summary metrics is generated when execution starts from ContainerRequestFilter(Prefilter) of Grizzly server i.e when HTTP request is processed
             </li>
             <li class="size">
-              Summary metric is reported back to registry before exiting
-              ContainerRequestFilter(PostFilter) of Grizzly server
+              Summary metric is reported back to registry when execution starts exits from 
+              ContainerRequestFilter(PostFilter) of Grizzly server i.e when HTTP request is processed
             </li>
             <li class="size">promql to get average latency</li>
           </ol>
