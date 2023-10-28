@@ -764,18 +764,18 @@
               implementation has lower overhead
             </li>
             <li class="size">
-              But, Unix Domain Socket based integration is 10%
+              But, Distributed OPA implementtaion (Unix Domain Socket based integration) was 10%
               slower than exisiting implementation
             </li>
             <li class="size">
-              But, HTTP based integration is 58%
+              But, Centralized OPA implementation (HTTP based integration) was 58%
               slower than exisiting implementation
             </li>
             <li class="size">
-              Jarl based integration was 407% slower than existing implementation
+              Distributed OPA implementtaion (Jarl based integration) was 407% slower than existing implementation
             </li>
             <li class="size">
-              Wasm based integration was 303% slower than existing implementation
+              Distributed OPA implementtaion (Wasm based integration) was 303% slower than existing implementation
             </li>
           </ol>
         </section>
@@ -898,13 +898,11 @@
         </h2>
         <ul>
           <li class="size">
-            Distributed OPA i.e. implementation based on OPA Engine as a Sidecar
-            Container had a faster response in the case of coarse-grained authorization
-            REST API compared to Centralized OPA.
+            In the case of coarse-grained authorization REST API, Distributed OPA i.e. implementation based on OPA Engine as a Sidecar
+            Container had a faster response  compared to Centralized OPA.
           </li>
           <li class="size">
-            Distributed OPA i.e. implementation based on Wasm Binary had a faster response in the case of fine-grained
-            authorization REST API compared to the original JAVA service.
+            In the case of fine-grained authorization REST API, Distributed OPA i.e. implementation based on Wasm Binary had a faster response  compared to the original JAVA service.
           </li>
         </ul>
       </section>
