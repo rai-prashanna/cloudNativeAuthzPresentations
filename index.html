@@ -665,7 +665,7 @@
             <li class="size">
               Summary metric is reported back to registry when execution starts exits from 
               ContainerRequestFilter(PostFilter) of Grizzly server i.e when HTTP request is processed and HTTP response is created
-            </li>
+            </li>fv
             <li class="size">
               Summary metric contains total time to process HTTP request and create HTTP response
             </li>
@@ -841,12 +841,10 @@
           <h2 class="bigsize">Analysis</h2>
           <ol>
             <li class="size">
-              Old implementation uses lot of iteration to filter out datas
-              before sending response
+              Our original authorization logic gets slower when larger data needs to be filter out.
             </li>
             <li class="size">
-              Wasm-time uses JIT compiler that might have use loop unrolling
-              for large interations
+              Wasm based implementation perform faster with larger datas.
             </li>
           </ol>
         </section>
